@@ -24,25 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "(08+i!5m%bysyo#-34$z_nb6f@fie(3*rsjzdo$u98d$lrj)-w"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
-in_heroku = False
-if "DATABASE_URL" in os.environ:
-    in_heroku = True
+ALLOWED_HOSTS = ["*"]
 
 import dj_database_url
 
-if in_heroku:
-    DATABASES = {"default": dj_database_url.config()}
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
-    }
 
 # Application definition
 
